@@ -6,6 +6,36 @@
     android:layout_height="match_parent"
     tools:context="com.example.ethan.signquiz.MainActivity">
 
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/resetButton"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/winTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/winTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/victoryText"
+        android:textAppearance="@android:style/TextAppearance.Material.Menu"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/quizLinearLayout"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/quizLinearLayout"
+        app:layout_constraintVertical_bias="0.122" />
+
     <LinearLayout
         android:id="@+id/quizLinearLayout"
         android:layout_width="match_parent"

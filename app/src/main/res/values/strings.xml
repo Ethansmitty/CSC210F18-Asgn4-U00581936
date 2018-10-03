@@ -3,4 +3,6 @@
     <string name="image_description">Sign currently displayed by quiz</string>
     <string name="guess_sign">Guess the sign!</string>
     <string name="incorrect_answer">Incorrect!</string>
+    <string name="victoryText">You win!</string>
+    <string name="resetButton">Reset</string>
 </resources>

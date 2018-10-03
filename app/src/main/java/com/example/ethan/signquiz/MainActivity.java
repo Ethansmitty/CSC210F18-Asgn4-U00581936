@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView signImageView; // displays a flag
     private LinearLayout[] guessLinearLayouts; // rows of answer Buttons
     private TextView answerTextView; // displays correct answer
+    private TextView winTextView;
+    private Button resetButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         guessLinearLayouts[2] = findViewById(R.id.row3LinearLayout);
         guessLinearLayouts[3] = findViewById(R.id.row4LinearLayout);
         answerTextView = findViewById(R.id.answerTextView);
+        winTextView = findViewById(R.id.winTextView);
+        resetButton = findViewById(R.id.resetButton);
+
+        resetButton.setOnClickListener(resetButtonListener);
 
         // configure listeners for the guess Buttons
         for (LinearLayout row : guessLinearLayouts) {
@@ -95,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
         correctAnswers = 0; // reset the number of correct answers made
         totalGuesses = 0; // reset the total number of guesses the user made
         quizSignsList.clear(); // clear prior list of quiz countries
+        winTextView.setVisibility(View.INVISIBLE);
+        resetButton.setVisibility(View.INVISIBLE);
+        signImageView.setVisibility(View.VISIBLE);
 
         int signCounter = 1;
         int numberOfSigns = fileNameList.size();
@@ -215,6 +224,12 @@ public class MainActivity extends AppCompatActivity {
         animator.start(); // start the animation
     }
 
+    private View.OnClickListener resetButtonListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            resetQuiz();
+        }
+    };
     // called when a guess Button is touched
     private View.OnClickListener guessButtonListener = new View.OnClickListener() {
         @Override
@@ -236,8 +251,9 @@ public class MainActivity extends AppCompatActivity {
 
                 // if the user has correctly identified FLAGS_IN_QUIZ flags
                 if (correctAnswers == SIGNS_IN_QUIZ) {
-
-
+                    signImageView.setVisibility(View.INVISIBLE);
+                    winTextView.setVisibility(View.VISIBLE);
+                    resetButton.setVisibility(View.VISIBLE);
 
                 } else { // answer is correct but quiz is not over
                     // load the next sign after a 2-second delay
